@@ -15,7 +15,7 @@ import com.sturni.lab3practico1.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     private Button btGuardar;
-    private EditText etRMail, etRPass;
+    private EditText etRMail, etRPass, etRNombre, etRDni;
     private RegisterActivityViewModel vm;
 
     @Override
@@ -29,6 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onChanged(Usuario usuario) {
                 etRMail.setText(usuario.getMail());
                 etRPass.setText(usuario.getPass());
+                etRNombre.setText(usuario.getNombre());
+                etRDni.setText(usuario.getDni()+"");
             }
         });
         Bundle b = getIntent().getExtras();
@@ -39,8 +41,10 @@ public class RegisterActivity extends AppCompatActivity {
         btGuardar = findViewById(R.id.btGuardar);
         etRMail = findViewById(R.id.etRMail);
         etRPass = findViewById(R.id.etRPass);
+        etRNombre = findViewById(R.id.etRNombre);
+        etRDni = findViewById(R.id.etRDni);
         btGuardar.setOnClickListener(v -> {
-            vm.guardar(etRMail.getText().toString(), etRPass.getText().toString());
+            vm.guardar(etRMail.getText().toString(), etRPass.getText().toString(), etRNombre.getText().toString(), etRDni.getText().toString());
             Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
         });

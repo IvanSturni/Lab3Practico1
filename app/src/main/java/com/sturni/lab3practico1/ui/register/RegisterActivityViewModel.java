@@ -37,10 +37,8 @@ public class RegisterActivityViewModel extends AndroidViewModel {
         }
     }
 
-    public void guardar(String mail, String pass) {
-        Usuario u = new Usuario();
-        u.setMail(mail);
-        u.setPass(pass);
+    public void guardar(String mail, String pass, String nombre, String dni) {
+        Usuario u = new Usuario(Long.parseLong(dni), nombre, mail, pass);
         ApiClient.guardar(context, u);
     }
 }
