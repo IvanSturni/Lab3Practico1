@@ -17,6 +17,7 @@ import com.sturni.lab3practico1.request.ApiClient;
 public class RegisterActivityViewModel extends AndroidViewModel {
     private Context context;
     private MutableLiveData<Usuario> usuario;
+    private MutableLiveData<String> titulo;
 
     public RegisterActivityViewModel(@NonNull Application application) {
         super(application);
@@ -31,9 +32,20 @@ public class RegisterActivityViewModel extends AndroidViewModel {
         return usuario;
     }
 
+    public LiveData<String> getTitulo() {
+        if (titulo == null) {
+            titulo = new MutableLiveData<>();
+            titulo.setValue("Registrarse");
+        }
+        return titulo;
+    }
+
     public void comprobarLogin(Bundle b) {
         if (b != null && b.getBoolean("login")) {
             usuario.setValue(ApiClient.leer(context));
+            titulo.setValue("Cambiar Datos");
+        } else {
+            titulo.setValue("Registrarse");
         }
     }
 
