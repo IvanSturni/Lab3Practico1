@@ -26,7 +26,7 @@ public class RegisterActivityViewModel extends AndroidViewModel {
     public LiveData<Usuario> getUsuario() {
         if (usuario == null) {
             usuario = new MutableLiveData<>();
-            usuario.setValue(new Usuario(0,"","","3"));
+            usuario.setValue(new Usuario(0,"","",""));
         }
         return usuario;
     }

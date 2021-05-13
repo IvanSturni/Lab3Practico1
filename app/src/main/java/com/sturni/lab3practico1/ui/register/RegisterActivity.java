@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         vm.getUsuario().observe(this, new Observer<Usuario>() {
             @Override
             public void onChanged(Usuario usuario) {
-                etRMail.setText("hola");
+                etRMail.setText(usuario.getMail());
                 etRPass.setText(usuario.getPass());
             }
         });
